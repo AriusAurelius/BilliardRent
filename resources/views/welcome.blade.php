@@ -14,7 +14,7 @@
             <div>
                 <a href="#features" class="text-gray-600 mx-2 hover:text-green-600">Feature</a>
                 <a href="#pricing" class="text-gray-600 mx-2 hover:text-green-600">Table</a>
-                <a href="./booktable" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Book Now</a>
+                <a href="./auth/loginadmin" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Admin Login</a>
             </div>
         </div>
     </nav>

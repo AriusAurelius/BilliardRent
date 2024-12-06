@@ -4,13 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Meja Billiard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    
-    <!-- Link ke Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Link ke library JS Flatpickr -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body>
 <section id="book-now" class="py-16 bg-gray-100">
@@ -35,7 +29,14 @@
             <!-- Pilih Tanggal -->
             <div class="mb-4">
                 <label for="date" class="block text-gray-700 font-bold mb-2">Tanggal</label>
-                <input type="text" id="tanggal" name="tanggal" required placeholder="Masukan Tanggal" class="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-green-600">
+                <input 
+                    type="date" 
+                    id="tanggal" 
+                    name="tanggal" 
+                    required 
+                    placeholder="Masukan Tanggal" 
+                    class="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-green-600"
+                >
             </div>
             <!-- Pilihan Meja -->
             <div class="mb-4">
@@ -189,14 +190,21 @@
     popupwaktu.classList.add('hidden'); // Menyembunyikan popup
 });
 
-// Inisialisasi flatpickr untuk input dengan id 'tanggal'
-flatpickr("#tanggal", {
-    dateFormat: "d-m-Y", // Format: tanggal-bulan-tahun (contoh: 06-12-2024)
-    locale: "id", // Menggunakan bahasa Indonesia
-    altInput: true, // Menampilkan input alternatif yang lebih ramah pengguna
-    altFormat: "d-m-Y", // Format alternatif
-    allowInput: true, // Memungkinkan input manual
-});
+// Mendapatkan elemen input tanggal
+const tanggalInput = document.getElementById('tanggal');
+
+// Mendapatkan tanggal hari ini
+const today = new Date();
+const todayISO = today.toISOString().split('T')[0]; // Format yyyy-mm-dd
+
+// Mendapatkan tanggal 7 hari ke depan
+const next7Days = new Date();
+next7Days.setDate(today.getDate() + 7);
+const next7DaysISO = next7Days.toISOString().split('T')[0];
+
+// Mengatur atribut min dan max
+tanggalInput.min = todayISO;
+tanggalInput.max = next7DaysISO;
 
 </script>
 
